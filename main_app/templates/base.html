@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} BOOTSTRAP 5 CSS {% endcomment %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    {% comment %} CUSTOM CSS {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    {% comment %} GOOGLE FONT IMPORT {% endcomment %}
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <title>PKN Tracker</title>
+</head>
+<body class="h-100 row align-items-center">
+<header>
+    <nav class="navbar navbar-expand">
+      <div class="container-fluid">
+        
+          <a href="/">
+            <img src="{% static '/images/logo.png' %}" width="65px" height="65px" alt="">
+            {% comment %} <p id="home-link" class="btn btn-primary">PKN Tracker</p> {% endcomment %}
+          </a>
+        <div class="right">
+          <ul class="right">
+            {% if user.is_authenticated %}
+              <li class="nav-links"><a class="basic-button" href="{% url 'profile' %}">Profile</a></li>
+              <li class="nav-links"><a class="basic-button" href="{% url 'logout' %}">Log Out</a></li>
+            {% else %}
+              <li class="nav-links"><a class="basic-button" href="{% url 'signup' %}">Sign Up</a></li>
+              <li class="nav-links"><a class="basic-button" href="{% url 'login' %}">Log In</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  {% comment %} <div class="background"> {% endcomment %}
+    {% block content%}
+    {% endblock %}
+  {% comment %} </div> {% endcomment %}
+  
+</body>
+</html>

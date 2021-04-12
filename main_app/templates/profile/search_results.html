@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% for pokemon in pokemon %}
+    <div class="card">
+      <img class="card-img" src="{{pokemon.picture}}">
+      <div class="container-card">
+        <p>ID: {{pokemon.id}}</p>
+        <h6 class="text-capitalize"><b>{{pokemon.name}}</b></h6>
+        <a class="basic-button" href="{% url 'new_pokemon' run.id pokemon.pk_id %}">Add to Run</a>
+      </div>
+    </div>
+{% endfor %} 
+
+
+
+{% endblock %}
