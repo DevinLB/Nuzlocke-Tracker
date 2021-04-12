@@ -37,6 +37,17 @@ for i in range(number_of_pokemon):
 
   pk_name = pk_parsed['name']
   pk_id = pk_parsed['id']
+  type_1 = pk_parsed['types'][0]['type']['name']
+  type_2 = pk_parsed['types'][1]['type']['name']
+  picture = pk_parsed['sprites']['other']['dream_world']['front_default']
+  hp = pk_parsed['stats'][0]['base_stat']
+  attack = pk_parsed['stats'][1]['base_stat']
+  defense = pk_parsed['stats'][2]['base_stat']
+  sp_attack = pk_parsed['stats'][3]['base_stat']
+  sp_defense = pk_parsed['stats'][4]['base_stat']
+  speed = pk_parsed['stats'][5]['base_stat']
+  print(speed)
+
   pk_json = pk_parsed
 
   pk_data.append(
@@ -45,6 +56,15 @@ for i in range(number_of_pokemon):
     "fields": {
       "name": pk_name,
       "pk_id": pk_id,
+      "type_1": type_1,
+      "type_2": type_2,
+      "picture": picture,
+      "hp": hp,
+      "attack": attack,
+      "defense": defense,
+      "sp_attack": sp_attack,
+      "sp_defense": sp_defense,
+      "speed": speed,
       "jfield": pk_parsed,
       },
     }

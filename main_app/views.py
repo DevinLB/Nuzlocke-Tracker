@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
+import json
+
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -8,7 +10,6 @@ from django.contrib.auth.forms import AuthenticationForm
 
 from .forms import SignUpForm, NewRunForm
 from .models import Run, Pkinfo, Pokemon
-
 
 
 ### VIEWS
@@ -48,7 +49,15 @@ def profile(request):
 @login_required
 def show_run(request, run_id):
   run = Run.objects.get(id = run_id)
-  return render(request, 'profile/show_run.html', {'run': run})
+  pokemon = run.pokemon_set.all()
+  
+  print(pokemon)
+  print(run)
+  content = {
+    'run': run,
+    'pokemon': pokemon,
+  }
+  return render(request, 'profile/show_run.html', content)
 
 # Define New Run View
 @login_required
@@ -67,4 +76,10 @@ def add_run(request):
     return redirect('profile')
   else:
     return render(request, 'profile/new_run.html')
+
+# Define Show Pokemon View
+@login_required
+def show_pokemon(request, pokemon_id):
+  pokemon = Pokemon.objects.get(id = pokemon_id)
+  return render(request, 'profile/show_pokemon.html', {'pokemon': pokemon})
   

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<h1 class="text-capitalize">{{ pokemon.name }}</h1>
+
+
+<div class="card" style="width: 500px">
+  <img class="card-img" src="{{pokemon.picture}}">
+  <div class="container-card">
+    <p>ID: {{pokemon.pk_id}}</p>
+    <p>Base Stats:</p>
+    <ul>
+      <li>Health: {{ pokemon.hp }}</li>
+      <li>Attack: {{ pokemon.attack }}</li>
+      <li>Defense: {{ pokemon.defense }}</li>
+      <li>Special Attack: {{ pokemon.sp_attack }}</li>
+      <li>Special Defense: {{ pokemon.sp_defense }}</li>
+      <li>Speed: {{ pokemon.speed }}</li>
+    </ul>
+  </div>
+</div>
+ 
+
+{% endblock %}
