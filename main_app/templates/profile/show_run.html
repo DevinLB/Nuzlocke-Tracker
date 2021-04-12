@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<h1>{{ run.name }}</h1>
+<p>{{ run.rules }}</p>
+
+<form class="nav-search" action="{% url 'search_results' run.id %}" method="get">
+    <input class="me-2" type="text" placeholder="Search for Pokemon" name="q">
+    <button class="btn btn-sm btn-success " type="submit">Search</button>
+</form>
+<div class="row">
+{% for pokemon in pokemon %}
+    <div class="card col-6 col-sm-3 mb-3">
+      <img class="card-img" src="{{pokemon.picture}}">
+      <div class="container-card">
+        <h6 ><b><a class="basic-button" href="{% url 'show_pokemon' pokemon.pk_id%}">{{pokemon.nickname}}</a></b></h6>
+        <p>ID: {{pokemon.pk_id}}</p>
+      </div>
+    <a class="basic-button" href="{% url 'delete_pokemon' run.id pokemon.id%}">DELETE</a>
+    </div>
+{% endfor %} 
+</div>
+
+{% endblock %}

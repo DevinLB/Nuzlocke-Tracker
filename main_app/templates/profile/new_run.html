@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Create a new Nuzlocke run</h1>
+
+<form method="POST" action="{% url 'add_run'%}">
+  {% csrf_token %}
+  {{ run_form.as_p }}
+  
+  <input type="submit" class="basic-button" value="Add Run">
+</form>
+{% endblock %}

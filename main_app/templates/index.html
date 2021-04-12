@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% comment %} {% load static %} {% endcomment %}
+
+{% block content %}
+{% comment %} <div="background-pls">
+  <div class="background-img"></div>
+  <div class="container-index">
+    <h1>Pokemon Nuzlocke Tracker</h1>
+    <hr />
+    <p>This is a helpful tool for doing a Pokemon Nuzlocke Challenge</p>
+    <p>With this tool you can:</p>
+    <ul>
+      <li>Look up useful information about certain Pokemon</li>
+      <li>Keep track of your different runs</li>
+      <li>Keep track of your Pokemon</li>
+      <li>Check off what routes you’ve completed</li>
+    </ul>
+    
+  </div>
+</div> {% endcomment %}
+{% comment %} <div class="background h-100 row align-items-center"> {% endcomment %}
+<div class="row">
+  <div class="d-flex justify-content-center">
+    <div class="box">
+      <img class="image-bg img-fluid" src="../static/images/backgrounds/lugia.png" alt="">
+    </div>
+    <div class="box stack-top index-container container" >
+      <div class="desc">
+        <h2>Pokemon Nuzlocke Tracker</h2>
+        <h5>This is a helpful tool for doing a Pokemon Nuzlocke Challenge</h5>
+      </div>
+      <div class="use">
+        <p>With this tool you can:</p>
+        <ul>
+          <li>Look up useful information about certain Pokemon</li>
+          <li>Keep track of your different runs</li>
+          <li>Keep track of your Pokemon</li>
+          <li>Check off what routes you’ve completed</li>
+        </ul>
+      </div>
+      <div class="button">
+        <h2>What is a Nuzlocke?</h2>
+        <p>
+          The Nuzlocke Challenge is essentially a self-imposed ruleset to make the game more challenging. This challenge was named after the user who came up with the idea. The core rules include: When your Pokemon faint, they are to be considered "dead", and can no longer be used. You may only catch the first wild Pokemon you see in each area, if you fail to catch it, you lose your only chance. You must name your Pokemon, as to form stronger emotional bonds with them in the event they may eventually "die."
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
