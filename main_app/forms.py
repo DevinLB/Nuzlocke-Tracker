@@ -25,18 +25,18 @@ class NewRunForm(forms.ModelForm):
 
 class NewPokemonForm(forms.ModelForm):
     nickname = forms.CharField(max_length=100, required=True)
-    status = forms.CharField(max_length=15)
-    name = forms.CharField(max_length=100)
-    pk_id = forms.CharField(max_length=100)
-    type_1 = forms.CharField(max_length=15)
-    type_2 = forms.CharField(max_length=15)
-    picture = forms.CharField(max_length=100)
-    hp = forms.IntegerField()
-    attack = forms.IntegerField()
-    defense = forms.IntegerField()
-    sp_attack = forms.IntegerField()
-    sp_defense = forms.IntegerField()
-    speed = forms.IntegerField()
+    status = forms.CharField(max_length=15, widget=forms.HiddenInput())
+    name = forms.CharField(max_length=100, widget=forms.HiddenInput())
+    pk_id = forms.CharField(max_length=100, widget=forms.HiddenInput())
+    type_1 = forms.CharField(max_length=15, widget=forms.HiddenInput())
+    type_2 = forms.CharField(max_length=15, widget=forms.HiddenInput())
+    picture = forms.CharField(max_length=100, widget=forms.HiddenInput())
+    hp = forms.IntegerField(widget=forms.HiddenInput())
+    attack = forms.IntegerField(widget=forms.HiddenInput())
+    defense = forms.IntegerField(widget=forms.HiddenInput())
+    sp_attack = forms.IntegerField(widget=forms.HiddenInput())
+    sp_defense = forms.IntegerField(widget=forms.HiddenInput())
+    speed = forms.IntegerField(widget=forms.HiddenInput())
     
     class Meta:
         model = Pokemon

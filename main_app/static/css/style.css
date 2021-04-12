@@ -106,6 +106,7 @@ body {
   border-radius: 5px; /* 5px rounded corners */
   width:200px;
   margin: 10px;
+  
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -129,4 +130,9 @@ body {
   border-radius: 5px 5px 0 0;
   height: 200px;
   width: 200px;
+}
+
+.hidden {
+  position: absolute;
+	left: -1000px;
 }

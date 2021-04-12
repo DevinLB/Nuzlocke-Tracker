@@ -10,9 +10,9 @@
     <div class="card d-flex justify-content-center">
       <img class="card-img" src="{% static '/images/logo.png' %}">
       <div class="container-card">
-  <a class="basic-button" href="{% url 'show_run' run.id %}">
-        <h6 class="text-capitalize" style="margin:auto"><b>{{run.name}}</b></h6>
-  </a>
+        <a class="basic-button" href="{% url 'show_run' run.id %}">
+          <h6 class="text-capitalize" style="margin:auto"><b>{{run.name}}</b></h6>
+        </a>
         <p class="text-capitalize">{{run.game}}</p>
       </div>
     </div>

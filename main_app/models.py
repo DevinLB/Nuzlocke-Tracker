@@ -54,15 +54,6 @@ class Pokemon(models.Model):
     return self.name
 
 
-# class Pkinfo(models.Model):
-#   name = models.CharField(max_length=100)
-#   pk_id = models.CharField(max_length=100)
-#   type_1 = models.CharField(max_length=15)
-#   type_2 = models.CharField(max_length=15, null=True)
-  
-  # def __str__(self):
-  #   return self.name
-
 
 # class Game(models.Model):
 #   name = models.CharField(max_length=100)

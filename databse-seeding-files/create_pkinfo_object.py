@@ -48,7 +48,7 @@ for i in range(number_of_pokemon):
   sp_attack = pk_parsed['stats'][3]['base_stat']
   sp_defense = pk_parsed['stats'][4]['base_stat']
   speed = pk_parsed['stats'][5]['base_stat']
-  print(speed)
+  # print(speed)
 
   pk_json = pk_parsed
 
@@ -72,7 +72,7 @@ for i in range(number_of_pokemon):
     }
   )
 
-  print(pk_name, pk_id)
+  print(pk_id, pk_name, "added")
 
 # print(pk_data)
 # print(json.dumps(pokemon_parsed, sort_keys=True, indent=4))
