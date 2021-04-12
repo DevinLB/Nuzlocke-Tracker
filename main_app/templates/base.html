@@ -13,13 +13,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
     <title>PKN Tracker</title>
 </head>
-<body>
+<body class="h-100 row align-items-center">
 <header>
-    <nav>
-      <div>
-        <ul>
-          <li><a href="/">PKN Tracker</a></li>
-        </ul>
+    <nav class="navbar navbar-expand">
+      <div class="container-fluid">
+        
+          <a href="/">
+            <img src="{% static '/images/logo.png' %}" width="50px" height="50px" alt="">
+            <p id="home-link">PKN Tracker</p>
+          </a>
+        
         <ul class="right">
           {% if user.is_authenticated %}
             <li><a href="{% url 'profile' %}">Profile</a></li>
@@ -32,7 +35,11 @@
       </div>
     </nav>
   </header>
-  {% block content%}
-  {% endblock %}
+  
+  {% comment %} <div class="background"> {% endcomment %}
+    {% block content%}
+    {% endblock %}
+  {% comment %} </div> {% endcomment %}
+  
 </body>
 </html>

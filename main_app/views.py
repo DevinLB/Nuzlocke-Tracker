@@ -10,7 +10,7 @@ from .forms import SignUpForm
 # from .models import Profile, City, Review
 
 
-# My Views
+### VIEWS
 
 # Define Signup View
 def signup(request):
@@ -35,7 +35,10 @@ def signup(request):
 # Define Home View 
 def home(request):
     return render(request, 'index.html')
+
 # Define Profile View
 @login_required
 def profile(request):
-    return render(request, 'profile/profile.html')
+  profile = User.objects.get(user=request.user)
+  # runs = 
+  return render(request, 'profile/profile.html', {'profile': profile})

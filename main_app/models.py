@@ -32,5 +32,5 @@ class Run(models.Model):
 #   type_2 = models.CharField(max_length=15, null=True)
   
 
-  def __str__(self):
-    return self.name
+  # def __str__(self):
+  #   return self.name
