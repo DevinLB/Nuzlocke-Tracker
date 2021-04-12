@@ -39,6 +39,6 @@ def home(request):
 # Define Profile View
 @login_required
 def profile(request):
-  profile = User.objects.get(user=request.user)
+  profile = request.user
   # runs = 
   return render(request, 'profile/profile.html', {'profile': profile})
