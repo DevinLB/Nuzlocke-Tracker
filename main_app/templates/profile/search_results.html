@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% for pokemon in pokemon %}
+    <div class="card">
+      <img class="card-img" src="{{pokemon.picture}}">
+      <div class="container-card">
+        <a href="{% url 'new_pokemon' run.id pokemon.id %}"><h6><b>{{pokemon.name}}</b></h6></a>
+        <p>{{pokemon.id}}</p>
+      </div>
+    </div>
+{% endfor %} 
+
+
+
+{% endblock %}

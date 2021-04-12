@@ -8,5 +8,8 @@ urlpatterns = [
   path('run/<int:run_id>/', views.show_run, name='show_run'),
   path('new_run/', views.new_run, name='new_run'),
   path('add_run/', views.add_run, name='add_run'),
-  path('pokemon/<int:pokemon_id>', views.show_pokemon, name='show_pokemon'),
+  path('run/<int:run_id>/search_results/', views.search_results, name='search_results'),
+  
+  path('pokemon/<int:pokemon_id>/', views.show_pokemon, name='show_pokemon'),
+  path('run/<int:run_id>/<int:pokemon_id>/', views.new_pokemon, name='new_pokemon'),
 ]

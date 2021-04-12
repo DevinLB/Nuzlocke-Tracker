@@ -5,6 +5,11 @@
 
 <h1>{{ run.name }}</h1>
 <p>{{ run.rules }}</p>
+{% comment %} <p><a class="basic-button" href="{% url 'new_pokemon' %}" >Add Pokemon</a></p> {% endcomment %}
+<form class="nav-search" action="{% url 'search_results' run.id %}" method="get">
+    <input class="form-control me-2" type="text" placeholder="Search for Pokemon" name="q">
+    <button class="btn btn-sm btn-success " type="submit">Search</button>
+</form>
 {% for pokemon in pokemon %}
     <div class="card">
       <img class="card-img" src="{{pokemon.picture}}">
