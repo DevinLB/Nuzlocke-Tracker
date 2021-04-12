@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from django.contrib.auth import login
@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 
-from .forms import SignUpForm
+from .forms import SignUpForm, NewRunForm
 from .models import Run
 # from .models import Profile, City, Review
 
@@ -43,3 +43,28 @@ def profile(request):
   profile = request.user
   runs = profile.run_set.all()
   return render(request, 'profile/profile.html', {'profile': profile, 'runs': runs})
+
+# Define Show Run View
+@login_required
+def show_run(request, run_id):
+  run = Run.objects.get(id = run_id)
+  return render(request, 'profile/show_run.html')
+
+# Define New Run View
+@login_required
+def new_run(request):
+  run_form = NewRunForm();
+  return render(request, 'profile/new_run.html', {'run_form': run_form})
+
+# Define Add Run View
+@login_required
+def add_run(request):
+  form = NewRunForm(request.POST or None)
+  if request.POST and form.is_valid():
+    new_review = form.save(commit = False)
+    new_review.user = request.user
+    new_review.save()
+    return redirect('profile')
+  else:
+    return render(request, 'profile/new_run.html')
+  
