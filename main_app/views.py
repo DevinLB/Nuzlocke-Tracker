@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 
 from .forms import SignUpForm
+from .models import Run
 # from .models import Profile, City, Review
 
 
@@ -40,5 +41,5 @@ def home(request):
 @login_required
 def profile(request):
   profile = request.user
-  # runs = 
-  return render(request, 'profile/profile.html', {'profile': profile})
+  runs = profile.run_set.all()
+  return render(request, 'profile/profile.html', {'profile': profile, 'runs': runs})

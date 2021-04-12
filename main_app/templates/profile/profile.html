@@ -1,6 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
+
 <h1>Welcome Back, {{profile.username}}</h1>
+ 
+{% for run in runs %}
+  <div class="card">
+    <img class="card-img" src="{% static '/images/logo.png' %}">
+    <div class="container-card">
+      <h6><b>{{run.name}}</b></h6>
+      <p>{{run.game}}</p>
+    </div>
+  </div>
+{% endfor %} 
+
+
+
 {% endblock %}
 
