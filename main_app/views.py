@@ -11,6 +11,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import SignUpForm, NewRunForm
 from .models import Run, Pkinfo, Pokemon
 
+default_rules = "Any Pokémon that faints is considered dead, and must be released or put in the Pokémon Storage System permanently (or may be transferred to another game, as long as the Pokémon is never able to be used again during this run). The player may only catch the first wild Pokémon encountered in each area, and none else. If the first wild Pokémon encountered faints or flees, there are no second chances. If the first encounter in the area is a double battle, the player is free to choose which of the two wild Pokémon they would like to catch but may only catch one of them. This restriction does not apply to Pokémon able to be captured during static encounters, nor to Shiny Pokémon. The player must nickname all of their Pokémon, for the sake of forming stronger emotional bonds. The player may only use Pokémon they have captured themselves, meaning Pokémon acquired through trading, Mystery Gifts, etc., are prohibited. As for trading and retrading the same Pokémon (for the purpose of evolving a Graveler, for example), there is no firm consensus. As of White: Hard-Mode Episode 3, it is implied that the player can accept Pokémon that are received freely from NPCs. The player may not voluntarily reset and reload the game whenever things go wrong. Being able to do so would render all of the other rules pointless. Legendary and otherwise game-breaking pokemon may not be used."
 
 ### VIEWS
 
@@ -62,7 +63,7 @@ def show_run(request, run_id):
 # Define New Run View
 @login_required
 def new_run(request):
-  run_form = NewRunForm();
+  run_form = NewRunForm(initial={'rules': default_rules});
   return render(request, 'profile/new_run.html', {'run_form': run_form})
 
 # Define Add Run View

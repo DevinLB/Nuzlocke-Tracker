@@ -18,7 +18,11 @@ class SignUpForm(UserCreationForm):
 class NewRunForm(forms.ModelForm):
     name = forms.CharField(max_length=100, required=True)
     game = forms.CharField(label='Game', widget=forms.RadioSelect(choices=GAMES, attrs={'class': ''}))
-    rules = forms.CharField(max_length=5000, required=True, widget=forms.Textarea(attrs={'class': 'form-control'}))
+    rules = forms.CharField(
+        max_length=5000, 
+        required=True, 
+        widget=forms.Textarea(attrs={'class': 'form-control'}, 
+        ))
     class Meta:
         model = Run
         fields = ['name', 'game', 'rules']

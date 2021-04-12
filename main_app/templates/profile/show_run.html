@@ -4,14 +4,14 @@
 {% load static %}
 
 <h1>{{ run.name }}</h1>
-
+<p>{{ run.rules }}</p>
 {% for pokemon in pokemon %}
     <div class="card">
       <img class="card-img" src="{{pokemon.picture}}">
       <div class="container-card">
-        <h6><b><a href="{% url 'show_pokemon' pokemon.pk_id%}">{{pokemon.name}}</a></b></h6>
+        <h6><b><a href="{% url 'show_pokemon' pokemon.pk_id%}">{{pokemon.nickname}}</a></b></h6>
   </a>
-        <p>{{pokemon.pk_id}}</p>
+        <p>ID: {{pokemon.pk_id}}</p>
       </div>
     </div>
 {% endfor %} 
