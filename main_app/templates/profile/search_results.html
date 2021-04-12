@@ -7,7 +7,7 @@
     <div class="card">
       <img class="card-img" src="{{pokemon.picture}}">
       <div class="container-card">
-        <a href="{% url 'new_pokemon' run.id pokemon.id %}"><h6><b>{{pokemon.name}}</b></h6></a>
+        <a href="{% url 'new_pokemon' run.id pokemon.pk_id %}"><h6><b>{{pokemon.name}}</b></h6></a>
         <p>{{pokemon.id}}</p>
       </div>
     </div>

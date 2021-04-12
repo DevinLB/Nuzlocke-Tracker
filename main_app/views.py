@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 
-from .forms import SignUpForm, NewRunForm
+from .forms import SignUpForm, NewRunForm, NewPokemonForm
 from .models import Run, Pkinfo, Pokemon
 from django.db.models import Q
 default_rules = "Any Pokémon that faints is considered dead, and must be released or put in the Pokémon Storage System permanently (or may be transferred to another game, as long as the Pokémon is never able to be used again during this run). The player may only catch the first wild Pokémon encountered in each area, and none else. If the first wild Pokémon encountered faints or flees, there are no second chances. If the first encounter in the area is a double battle, the player is free to choose which of the two wild Pokémon they would like to catch but may only catch one of them. This restriction does not apply to Pokémon able to be captured during static encounters, nor to Shiny Pokémon. The player must nickname all of their Pokémon, for the sake of forming stronger emotional bonds. The player may only use Pokémon they have captured themselves, meaning Pokémon acquired through trading, Mystery Gifts, etc., are prohibited. As for trading and retrading the same Pokémon (for the purpose of evolving a Graveler, for example), there is no firm consensus. As of White: Hard-Mode Episode 3, it is implied that the player can accept Pokémon that are received freely from NPCs. The player may not voluntarily reset and reload the game whenever things go wrong. Being able to do so would render all of the other rules pointless. Legendary and otherwise game-breaking pokemon may not be used."
@@ -71,9 +71,9 @@ def new_run(request):
 def add_run(request):
   form = NewRunForm(request.POST or None)
   if request.POST and form.is_valid():
-    new_review = form.save(commit = False)
-    new_review.user = request.user
-    new_review.save()
+    new_run = form.save(commit = False)
+    new_run.user = request.user
+    new_run.save()
     return redirect('profile')
   else:
     return redirect('profile')
@@ -87,16 +87,45 @@ def show_pokemon(request, pokemon_id):
 #Define New Pokemon View
 @login_required
 def new_pokemon(request, run_id, pokemon_id):
-  pokemon = Pokemon.objects.get(id = pokemon_id)
+  pokemon = Pkinfo.objects.get(id = pokemon_id)
   run = Run.objects.get(id = run_id)
-  return render(request, 'profile/new_pokemon.html', {'pokemon': pokemon, 'run': run})
+  pokemon_form = NewPokemonForm(initial={
+    'status': "Alive", 
+    'name': pokemon.name, 
+    'pk_id': pokemon.pk_id, 
+    'type_1': pokemon.type_1, 
+    'type_2': pokemon.type_1, 
+    'picture': pokemon.picture, 
+    'hp': pokemon.hp, 
+    'attack': pokemon.attack, 
+    'defense': pokemon.defense, 
+    'sp_attack': pokemon.sp_attack, 
+    'sp_defense': pokemon.sp_defense, 
+    'speed': pokemon.speed,
+    })
+  return render(request, 'profile/new_pokemon.html', {'pokemon': pokemon, 'run': run, 'pokemon_form': pokemon_form})
   
 #Define Add Pokemon View
 @login_required
-def new_pokemon(request, run_id, pokemon_id):
-  pokemon = Pokemon.objects.get(id = pokemon_id)
+def add_pokemon(request, run_id, pokemon_id):
+  form = NewPokemonForm(request.POST or None)
+  if request.POST and form.is_valid():
+    new_pokemon = form.save(commit = False)
+    new_pokemon.run_id = run_id
+    new_pokemon.save()
+    return redirect('show_run', run_id = run_id)
+  else:
+    return redirect('profile')
+
+  pokemon = Pkinfo.objects.get(id = pokemon_id)
   run = Run.objects.get(id = run_id)
   return render(request, 'profile/new_pokemon.html', {'pokemon': pokemon, 'run': run})
+
+@login_required
+def delete_pokemon (request, run_id, pokemon_id):
+    pokemon = Pokemon.objects.get(id = pokemon_id)
+    pokemon.delete()
+    return redirect ('show_run', run_id = run_id)
 
 #Define New Pokemon View
 @login_required

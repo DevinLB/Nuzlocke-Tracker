@@ -1,10 +1,7 @@
-/* .background {
-  background-image: url( "../images/backgrounds/background-gradient.png");
-  width:fit-content;
-  height: auto;
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
+*{
+  font-family: 'Source Serif Pro', serif;
+}
+
 body {
   background-image: url( "../images/backgrounds/background-gradient.png");
   background-repeat:repeat-y;
@@ -29,14 +26,14 @@ body {
   /* width:800px; */
   display: grid;
   grid-template-columns: 0.2fr 1fr 1fr 1fr 1fr 0.2fr;
-  grid-template-rows: 0.2fr 1fr 1fr 1fr 1fr 0.2fr;
+  grid-template-rows: 0.2fr 1fr 1.5fr 1fr 1fr 0.2fr;
   gap: 0px 0px;
   grid-template-areas:
     ". . . . . ."
     ". desc desc desc desc ."
     ". use use use use ."
-    ". use use use use ."
-    ". button button . . ."
+    ". button button button button ."
+    ". . . . . ."
     ". . . . . .";
 }
 
@@ -73,7 +70,7 @@ body {
   /* top: 0;
   left: 0; */
   margin: auto;
-
+  font-weight:bolder;
 }
 .stack-top{
   z-index: 9;
@@ -126,4 +123,10 @@ body {
   border-radius: 5px 5px 0 0;
   height: 100px;
   width: 100px;
+}
+
+.pk-show-card {
+  border-radius: 5px 5px 0 0;
+  height: 200px;
+  width: 200px;
 }

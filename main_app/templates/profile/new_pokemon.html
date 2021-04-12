@@ -4,7 +4,12 @@
 
 
 <h1>New Pokemon</h1>
-
+<form method="POST" action="{% url 'add_pokemon' run.id pokemon.id %}">
+  {% csrf_token %}
+  {{ pokemon_form.as_p }}
+  
+  <input type="submit" class="basic-button" value="Add Pokemon">
+</form>
 
 
 {% endblock %}

@@ -25,7 +25,19 @@ class NewRunForm(forms.ModelForm):
 
 class NewPokemonForm(forms.ModelForm):
     nickname = forms.CharField(max_length=100, required=True)
+    status = forms.CharField(max_length=15)
+    name = forms.CharField(max_length=100)
+    pk_id = forms.CharField(max_length=100)
+    type_1 = forms.CharField(max_length=15)
+    type_2 = forms.CharField(max_length=15)
+    picture = forms.CharField(max_length=100)
+    hp = forms.IntegerField()
+    attack = forms.IntegerField()
+    defense = forms.IntegerField()
+    sp_attack = forms.IntegerField()
+    sp_defense = forms.IntegerField()
+    speed = forms.IntegerField()
     
     class Meta:
         model = Pokemon
-        fields = ['nickname']
+        fields = ['nickname', 'status', 'name', 'pk_id', 'type_1', 'type_2', 'picture', 'hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']

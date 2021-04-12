@@ -4,16 +4,16 @@
 {% load static %}
 
 <h1>Welcome Back, {{profile.username}}</h1>
-<a href="{% url 'new_run' %}">Create New Run</a>
+<p><a class="basic-button" href="{% url 'new_run' %}">Create New Run</a></p>
  
 {% for run in runs %}
-    <div class="card">
+    <div class="card d-flex justify-content-center">
       <img class="card-img" src="{% static '/images/logo.png' %}">
       <div class="container-card">
-  <a href="{% url 'show_run' run.id %}">
-        <h6><b>{{run.name}}</b></h6>
+  <a class="basic-button" href="{% url 'show_run' run.id %}">
+        <h6 class="text-capitalize" style="margin:auto"><b>{{run.name}}</b></h6>
   </a>
-        <p>{{run.game}}</p>
+        <p class="text-capitalize">{{run.game}}</p>
       </div>
     </div>
 {% endfor %} 

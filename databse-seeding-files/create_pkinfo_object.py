@@ -26,7 +26,7 @@ print(pokemon_parsed['name'])
 
 pk_data = []
 
-number_of_pokemon = 2
+number_of_pokemon = 15
 for i in range(number_of_pokemon):
 
   url = "https://pokeapi.co/api/v2/pokemon/" + str(i + 1)
@@ -38,7 +38,9 @@ for i in range(number_of_pokemon):
   pk_name = pk_parsed['name']
   pk_id = pk_parsed['id']
   type_1 = pk_parsed['types'][0]['type']['name']
-  type_2 = pk_parsed['types'][1]['type']['name']
+  type_2 = "N/A"
+  # type_2 = pk_parsed['types'][1]['type']['name']
+    
   picture = pk_parsed['sprites']['other']['dream_world']['front_default']
   hp = pk_parsed['stats'][0]['base_stat']
   attack = pk_parsed['stats'][1]['base_stat']
