@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
-from django.contrib.postgres.fields import JSONField
+from django.db.models import JSONField
 
 # Import the User
 from django.contrib.auth.models import User
@@ -25,16 +25,17 @@ class Pkinfo(models.Model):
   def __str__(self):
     return self.name
 
-# class Pokemon(models.Model):
-#   name = models.CharField(max_length=100)
-#   pk_id = models.CharField(max_length=100)
-#   type_1 = models.CharField(max_length=15)
-#   type_2 = models.CharField(max_length=15, null=True)
-#   status = models.CharField(max_length=15, null=True)
+class Pokemon(models.Model):
+  name = models.CharField(max_length=100)
+  nickname = models.CharField(max_length=100)
+  pk_id = models.CharField(max_length=100)
+  status = models.CharField(max_length=15, null=True)
+  type_1 = models.CharField(max_length=15)
+  type_2 = models.CharField(max_length=15, null=True)
 
-#   run = models.ForeignKey(Run, on_delete=models.CASCADE)
-#   def __str__(self):
-#     return self.name
+  run = models.ForeignKey(Run, on_delete=models.CASCADE)
+  def __str__(self):
+    return self.name
 
 
 # class Pkinfo(models.Model):

@@ -7,8 +7,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 
 from .forms import SignUpForm, NewRunForm
-from .models import Run
-# from .models import Profile, City, Review
+from .models import Run, Pkinfo, Pokemon
+
 
 
 ### VIEWS
