@@ -11,18 +11,14 @@ body {
   background-size: cover;
 }
 
+.nav-links {
+  display: inline-block;
+}
 
+.right {
+  padding: 0;
+  list-style-type: none;
 
-.index-container {
-  display: grid;
-  grid-template-columns:  1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr ;
-  gap: 0px 0px;
-  grid-template-areas:
-      " . . ."
-      " . . ."
-      " . . ."
-      " . . .";
 }
 
 .index-container {
