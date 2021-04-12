@@ -48,7 +48,7 @@ def profile(request):
 @login_required
 def show_run(request, run_id):
   run = Run.objects.get(id = run_id)
-  return render(request, 'profile/show_run.html')
+  return render(request, 'profile/show_run.html', {'run': run})
 
 # Define New Run View
 @login_required
